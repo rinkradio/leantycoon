@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Play, Award, Quote } from "lucide-react";
 import { useState } from "react";
 
@@ -71,8 +71,8 @@ const feedbacks = [
   },
 ];
 
-// Animation variants
-const container = {
+// Animation variants with proper typing
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -83,7 +83,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
@@ -171,7 +171,7 @@ export default function FeedbackPage() {
                       onClick={() =>
                         setSelectedMedia({
                           type: "image",
-                          src: feedback.certificate!,
+                          src: feedback.certificate as string,
                         })
                       }
                     >
@@ -195,7 +195,7 @@ export default function FeedbackPage() {
                       onClick={() =>
                         setSelectedMedia({
                           type: "video",
-                          src: feedback.video!,
+                          src: feedback.video as string,
                         })
                       }
                     >
@@ -229,10 +229,14 @@ export default function FeedbackPage() {
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6"
           onClick={() => setSelectedMedia(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Media viewer"
         >
           <button
             onClick={() => setSelectedMedia(null)}
             className="absolute top-6 right-6 text-white text-4xl font-light hover:text-emerald-400 transition"
+            aria-label="Close modal"
           >
             ×
           </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants} from "framer-motion";
 import { useEffect, useState } from "react";
 import { directClients, indirectClients } from "./clientsData";
 
@@ -18,19 +18,16 @@ const containerVariant = {
   },
 };
 
-const cardVariant = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.35,
-      ease: "easeOut",
-    },
-  },
+      duration: 0.4,
+      ease: "easeOut"
+    }
+  }
 };
 
 // Custom hook to detect mobile
